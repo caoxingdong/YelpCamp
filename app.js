@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const morgan = require('morgan')
 const ejsMate = require('ejs-mate')
+const session = require('express-session')
 const { campgroundSchema, reviewSchema } = require('./schemas')
 const catchAsync = require('./utils/catchAsync')
 const ExpressError = require('./utils/ExpressError')
@@ -17,7 +18,8 @@ const reviews = require("./routes/reviews")
 mongoose.connect('mongodb://localhost:27017/yelp-camp', {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 })
 
 const db = mongoose.connection
@@ -31,6 +33,20 @@ const app = express()
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
+
+app.use(express.static(path.join(__dirname, 'public')))
+
+const sessionConfig = {
+    secret: 'thisshouldbethesecret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+app.use(session(sessionConfig))
 
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
