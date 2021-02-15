@@ -1,10 +1,11 @@
 {
-  "name": "YelpCamp-1",
+  "name": "yelpcamp",
   "version": "1.0.0",
   "description": "Yelp Camp web development project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
     "@mapbox/mapbox-sdk": "^0.12.1",
     "cloudinary": "^1.24.0",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^3.2.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "ejs-mate": "^3.0.0",
