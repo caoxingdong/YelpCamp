@@ -19,6 +19,7 @@ const Joi = require("joi")
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
+const mongoSanitize = require('express-mongo-sanitize');
 
 const campgroundRoutes = require("./routes/campgrounds")
 const reviewRoutes = require("./routes/reviews")
@@ -68,6 +69,7 @@ passport.deserializeUser(User.deserializeUser())
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(morgan('common'))
+app.use(mongoSanitize());
 
 app.use((req, res, next) => {
     // console.log(req.session)
