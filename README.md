@@ -1,8 +1,9 @@
-# Yelp Camp Web Development Project
-Yelp Camp web development project
+# [Yelp Camp Web Development Project](https://yelpcump.herokuapp.com/)
+[Yelp Camp web development project](https://yelpcump.herokuapp.com/)
 
-Techniques: 
+At a glance:
 
-HTML, CSS, JS
+![image-20210215181510168](readmeImages\home.png)
 
-Node, Express, Mongoose
+Functions and 
+
